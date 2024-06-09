@@ -26,7 +26,7 @@ public class AvisController {
     }
 
     @GetMapping("/client/{clientId}")
-    public ResponseEntity<List<Avis>> getAvisByClientId(@PathVariable Long clientId) {
+    public ResponseEntity<List<Avis>> getAvisByClientId(@PathVariable String clientId) {
         return avisService.getAvisByClientId(clientId);
     }
 

@@ -20,16 +20,13 @@ public class Location {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-
-    @ManyToOne
-    @JoinColumn(name = "vehicule_id")
     private Vehicule vehicule;
 
     @ManyToOne
-    @JoinColumn(name = "chauffeur_id")
-    private Chauffeur chauffeur;
+    private Utilisateur chauffeur;
+
+    @ManyToOne
+    private Utilisateur client;
 
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -41,9 +38,7 @@ public class Location {
     private String etat;
 
 
-    public void calculerPrixTotal() {
 
-    }
 
 
 }

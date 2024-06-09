@@ -14,7 +14,7 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    public ResponseEntity<Utilisateur> getUtilisateurById(Long id) {
+    public ResponseEntity<Utilisateur> getUtilisateurById(String id) {
         Optional<Utilisateur> utilisateur = utilisateurRepository.findById(id);
         if (utilisateur.isPresent()) {
             return new ResponseEntity<>(utilisateur.get(), HttpStatus.OK);
@@ -23,8 +23,8 @@ public class UtilisateurService {
         }
     }
 
-    public ResponseEntity<Utilisateur> getUtilisateurByEmail(String email) {
-        Optional<Utilisateur> utilisateur = utilisateurRepository.findByEmail(email);
+    public ResponseEntity<Utilisateur> getUtilisateurByUsername(String username) {
+        Optional<Utilisateur> utilisateur = utilisateurRepository.findByUsername(username);
         if (utilisateur.isPresent()) {
             return new ResponseEntity<>(utilisateur.get(), HttpStatus.OK);
         } else {
@@ -37,22 +37,9 @@ public class UtilisateurService {
         return new ResponseEntity<>(savedUtilisateur, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Utilisateur> updateUtilisateur(Long id, Utilisateur utilisateurDetails) {
-        Optional<Utilisateur> utilisateur = utilisateurRepository.findById(id);
-        if (utilisateur.isPresent()) {
-            Utilisateur updatedUtilisateur = utilisateur.get();
-            updatedUtilisateur.setNom(utilisateurDetails.getNom());
-            updatedUtilisateur.setEmail(utilisateurDetails.getEmail());
-            updatedUtilisateur.setTelephone(utilisateurDetails.getTelephone());
-            updatedUtilisateur.setRole(utilisateurDetails.getRole());
-            utilisateurRepository.save(updatedUtilisateur);
-            return new ResponseEntity<>(updatedUtilisateur, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
-    public ResponseEntity<Void> deleteUtilisateur(Long id) {
+
+    public ResponseEntity<Void> deleteUtilisateur(String id) {
         Optional<Utilisateur> utilisateur = utilisateurRepository.findById(id);
         if (utilisateur.isPresent()) {
             utilisateurRepository.delete(utilisateur.get());

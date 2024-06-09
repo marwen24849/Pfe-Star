@@ -16,13 +16,13 @@ public class UtilisateurController {
     private UtilisateurService utilisateurService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Utilisateur> getUtilisateurById(@PathVariable Long id) {
+    public ResponseEntity<Utilisateur> getUtilisateurById(@PathVariable String id) {
         return utilisateurService.getUtilisateurById(id);
     }
 
-    @GetMapping("/email")
-    public ResponseEntity<Utilisateur> getUtilisateurByEmail(@RequestParam String email) {
-        return utilisateurService.getUtilisateurByEmail(email);
+    @GetMapping("/username/{username}")
+    public ResponseEntity<Utilisateur> getUtilisateurByEmail(@RequestParam String username) {
+        return utilisateurService.getUtilisateurByUsername(username);
     }
 
     @PostMapping
@@ -30,13 +30,10 @@ public class UtilisateurController {
         return utilisateurService.createUtilisateur(utilisateur);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Utilisateur> updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateurDetails) {
-        return utilisateurService.updateUtilisateur(id, utilisateurDetails);
-    }
+
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUtilisateur(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUtilisateur(@PathVariable String id) {
         return utilisateurService.deleteUtilisateur(id);
     }
 }

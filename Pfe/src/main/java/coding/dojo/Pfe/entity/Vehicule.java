@@ -10,12 +10,11 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class Vehicule {
+public class Vehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +22,14 @@ public abstract class Vehicule {
 
     private String marque;
     private String modele;
+    private String Type;
     private String immatriculation;
     private float prixParJour;
     private boolean disponible;
+    @Enumerated(EnumType.STRING)
+    private TypeVehicule typeVehicule;
 
     @ManyToOne
-    @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
     @OneToMany

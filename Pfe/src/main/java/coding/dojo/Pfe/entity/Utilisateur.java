@@ -1,29 +1,34 @@
 package coding.dojo.Pfe.entity;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class Utilisateur {
+
+public class Utilisateur {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nom;
+    private String id;
+    private String username;
     private String email;
-    private String telephone;
+    private String firstName;
+    private String lastName;
+    private String level;
+    private List<String> roles = new ArrayList<>();
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+
 
 
 }

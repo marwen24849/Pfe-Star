@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AvisRepository extends JpaRepository<Avis, Long> {
-    List<Avis> findByClientId(Long clientId);
+    List<Avis> findByClientId(String client_id);
 
 }

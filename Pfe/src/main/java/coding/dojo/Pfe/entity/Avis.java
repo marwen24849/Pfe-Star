@@ -27,7 +27,7 @@ public class Avis {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client client;
+    private Utilisateur client;
 
 
 

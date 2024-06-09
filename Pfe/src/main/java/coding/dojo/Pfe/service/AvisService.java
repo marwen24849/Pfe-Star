@@ -29,7 +29,7 @@ public class AvisService {
         return new ResponseEntity<>(avis, HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Avis>> getAvisByClientId(Long clientId) {
+    public ResponseEntity<List<Avis>> getAvisByClientId(String clientId) {
         List<Avis> avis = avisRepository.findByClientId(clientId);
         return new ResponseEntity<>(avis, HttpStatus.OK);
     }

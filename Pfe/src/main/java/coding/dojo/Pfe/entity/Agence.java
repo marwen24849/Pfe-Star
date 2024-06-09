@@ -27,7 +27,7 @@ public class Agence {
     private List<Vehicule> vehicules;
 
     @OneToMany
-    private List<Chauffeur> chauffeurs;
+    private List<Utilisateur> chauffeurs;
 
 
 }
